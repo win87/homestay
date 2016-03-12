@@ -25,7 +25,7 @@
             <a class="play-pause"></a>
             <ol class="indicator"></ol>
             <!-- The modal dialog, which will be used to wrap the lightbox content -->
-            <div class="modal fade">
+            <!-- <div class="modal fade">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -45,7 +45,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
         </div>
     </div>
 

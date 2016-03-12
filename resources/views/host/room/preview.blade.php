@@ -31,6 +31,9 @@
                         <a class="page-scroll" href="#host">The Host</a>
                     </li>
                     <li>
+                        <a class="page-scroll" href="#map">Map</a>
+                    </li>
+                    <li>
                         <a class="page-scroll" href="{{ url('rooms/'.$room->id) }}">Return to listing</a>
                     </li>
                 </ul>
@@ -49,7 +52,7 @@
                 <img class="business-header" style="width:100%;" src="/{{ $photo->path }}" alt="">
             </a>
             @else
-                <img class="business-header" style="width:100%;" src="/images/4.jpg" alt="">
+                <img class="business-header" style="width:100%;" src="/images/public/no-image.png" alt="">
             @endif
         </header>
         
@@ -129,7 +132,7 @@
             
                 <hr class="divider">
 
-                <div class="col-sm-4">
+                <div class="col-sm-3">
                     <h4>The space</h4>
                 </div>
                 <div class="col-sm-4">
@@ -147,7 +150,7 @@
                         </tbody>              
                     </table>
                 </div>
-                <div class="col-sm-4">
+                <div class="col-sm-5">
                     <table class="table table-condensed"> 
                         <tbody>
                             <tr>
@@ -165,7 +168,7 @@
                 </div>
 
       
-                <div class="col-sm-4">
+                <div class="col-sm-3">
                     <h4>Amenities</h4>
                 </div>
                 <div class="col-sm-8">
@@ -179,7 +182,7 @@
                 </div>
 
 
-                <div class="col-sm-4">
+                <div class="col-sm-3">
                     <h4>Prices</h4>
                 </div>
                 <div class="col-sm-4">
@@ -191,33 +194,30 @@
                         </tbody>              
                     </table>
                 </div>
-                <div class="col-sm-4">
+                <div class="col-sm-5">
                     <table class="table table-condensed"> 
                         <tbody>
                             <tr>
-                                <td style="border-top:none;">daily price: <b> ${{ $room->d_price }}</b></td>
+                                <td style="border-top:none;">Daily price: <b> ${{ $room->d_price }}</b></td>
                             </tr>
                         </tbody>              
                     </table>
                 </div>
-           
-        
-
 
                 <hr class="divider">
-                <div class="col-sm-4">
+                <div class="col-sm-3">
                     <h4>Availability</h4>
                 </div>
                 <div class="col-sm-4">
                     <table class="table table-condensed"> 
                         <tbody>
                             <tr>
-                                <td style="border-top:none;">Available from: <b>{{ $room->avail_from }}</b></td>
+                                <td style="border-top:none;">From: <b>{{ $room->avail_from }}</b></td>
                             </tr>
                         </tbody>              
                     </table>
                 </div>
-                <div class="col-sm-4">
+                <div class="col-sm-5">
                     <table class="table table-condensed"> 
                         <tbody>
                             <tr>
@@ -226,16 +226,13 @@
                         </tbody>              
                     </table>
                 </div>
-          
-          
-
-
         
                 <hr class="divider">
-                <div class="col-sm-4">
+                
+                <div class="col-sm-3">
                     <h4>Description</h4>
                 </div>
-                <div class="col-sm-8">
+                <div class="col-sm-9">
                     <table class="table table-condensed"> 
                         <tbody>
                             <tr>
@@ -246,14 +243,6 @@
                         </tbody>              
                     </table>
                 </div>
-            </div>
-            
-            <div class="col-md-4 col-md-offset-1">
-   
-                <div id="map-canvas" style="width:100%;height:300px; margin:0 auto;"></div>
-                <input type="hidden" id="lat" value="<?php echo $room->lat; ?>" />
-                <input type="hidden" id="lng" value="<?php echo $room->lng; ?>" />
-
             </div>
 
             <!-- The Bootstrap Image Gallery lightbox, should be a child element of the document body -->
@@ -267,31 +256,9 @@
                 <a class="close">×</a>
                 <a class="play-pause"></a>
                 <ol class="indicator"></ol>
-                <!-- The modal dialog, which will be used to wrap the lightbox content -->
-                <div class="modal fade">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <button type="button" class="close" aria-hidden="true">&times;</button>
-                                <h4 class="modal-title"></h4>
-                            </div>
-                            <div class="modal-body next"></div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-default pull-left prev">
-                                    <i class="glyphicon glyphicon-chevron-left"></i>
-                                    Previous
-                                </button>
-                                <button type="button" class="btn btn-primary next">
-                                    Next
-                                    <i class="glyphicon glyphicon-chevron-right"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
 
-            <div class="row" id="links">
+            <div class="col-md-12" style="overflow: scroll; width:100%; height: 150px;">
 
                 @if (!empty($photo)) 
                     @foreach ($room->photos as $photo)
@@ -307,6 +274,8 @@
         </div>
         <!-- /.container -->
     </section>
+
+
 
     <!-- The Host Section -->
     <section id="host" class="" style="background-color:rgb(245,245,245); padding:30px">
@@ -328,6 +297,18 @@
             </div>
         </div>
     </section>
+
+    <section id="map">
+        <div class="row">
+   
+                <div id="map-canvas" style="width:100%;height:300px; margin:0 auto;"></div>
+                <input type="hidden" id="lat" value="<?php echo $room->lat; ?>" />
+                <input type="hidden" id="lng" value="<?php echo $room->lng; ?>" />
+
+            </div>
+    </section>
+
+
 
 @include('public.footer')
 
